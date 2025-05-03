@@ -1,3 +1,4 @@
+
 const input = document.getElementById('userInput');
 const chat = document.getElementById('chat');
 
@@ -5,6 +6,7 @@ let lastSpoken = "";
 let selectedVoice = null;
 let quizMode = false;
 let quizAnswer = "";
+const quizData = [{"question": "What is the English word for "chien"?", "answer": "dog"}, {"question": "How do you say "maison" in English?", "answer": "house"}, {"question": "Translate "chat" into English.", "answer": "cat"}, {"question": "What is the English word for "voiture"?", "answer": "car"}, {"question": "How do you say "pomme" in English?", "answer": "apple"}];
 
 input.addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
@@ -47,12 +49,12 @@ function repeatLast() {
 
 function handleInput(input) {
   if (quizMode) {
-    if (input.includes(quizAnswer)) {
+    if (input.includes(quizAnswer.toLowerCase())) {
       const response = "Correct! Great job, Fabrice!";
       addMessage(response, 'bot');
       speak(response);
     } else {
-      const response = `Not quite. The correct answer was: ${quizAnswer}`;
+      const response = "Not quite. The correct answer was: " + quizAnswer;
       addMessage(response, 'bot');
       speak(response);
     }
@@ -75,12 +77,13 @@ function respond(input) {
   } else if (input.includes("grammaire") || input.includes("verbe")) {
     response = "Let's learn the verb to be: I am, You are, He or She is. For example: I am French.";
   } else if (input.includes("surprends") || input.includes("quiz") || input.includes("jeu")) {
-    response = "What is the English word for 'chien'?";
-    quizAnswer = "dog";
+    const randomQuiz = quizData[Math.floor(Math.random() * quizData.length)];
+    response = randomQuiz.question;
+    quizAnswer = randomQuiz.answer;
     quizMode = true;
   } else if (input.includes("my name is")) {
     const name = input.split("my name is")[1].trim();
-    response = `Nice to meet you, ${name.charAt(0).toUpperCase() + name.slice(1)}!`;
+    response = "Nice to meet you, " + name.charAt(0).toUpperCase() + name.slice(1) + "!";
   } else {
     response = "Sorry Fabrice, I didn’t understand. Try Vocabulary, Dialogue, Grammar or Surprise me.";
   }
