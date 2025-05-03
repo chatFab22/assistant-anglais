@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant anglais</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+    #chat { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    .message { margin: 10px 0; }
+    .bot { color: blue; }
+    .user { color: green; text-align: right; }
+    input { width: 100%; padding: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<div id="chat">
+  <div class="message bot">Bonjour ! Je suis ton assistant pour apprendre l'anglais. Que veux-tu faire ?<br>
+  (Tape : "Vocabulaire", "Dialogue", "Grammaire" ou "Surprends-moi")</div>
+</div>
+
+<input id="userInput" placeholder="Écris ta réponse ici..." />
+
+<script src="chatbot.js"></script>
+</body>
+</html>
