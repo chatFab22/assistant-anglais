@@ -4,23 +4,56 @@
   <meta charset="UTF-8">
   <title>Assistant anglais</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
-    #chat { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
-    .message { margin: 10px 0; }
-    .bot { color: blue; }
-    .user { color: green; text-align: right; }
-    input { width: 100%; padding: 10px; margin-top: 10px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef2f7;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+    }
+    #chat-container {
+      width: 90%;
+      max-width: 600px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .message {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      line-height: 1.5;
+    }
+    .bot {
+      background-color: #dbeafe;
+      color: #1e3a8a;
+      text-align: left;
+    }
+    .user {
+      background-color: #dcfce7;
+      color: #166534;
+      text-align: right;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
-
-<div id="chat">
-  <div class="message bot">Bonjour ! Je suis ton assistant pour apprendre l'anglais. Que veux-tu faire ?<br>
-  (Tape : "Vocabulaire", "Dialogue", "Grammaire" ou "Surprends-moi")</div>
+<div id="chat-container">
+  <div id="chat">
+    <div class="message bot">Bonjour Fabrice ! Je suis ton assistant pour apprendre l'anglais. Que veux-tu faire ?<br>
+    (Tu peux écrire : "Vocabulaire", "Dialogue", "Grammaire" ou "Surprends-moi")</div>
+  </div>
+  <input id="userInput" placeholder="Écris ta réponse ici..." />
 </div>
-
-<input id="userInput" placeholder="Écris ta réponse ici..." />
-
 <script src="chatbot.js"></script>
 </body>
 </html>
