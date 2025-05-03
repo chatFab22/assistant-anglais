@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Assistant anglais</title>
+  <title>Assistant anglais vocal</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -36,13 +36,22 @@
       color: #166534;
       text-align: right;
     }
-    input {
+    input, button {
       width: 100%;
       padding: 12px;
+      margin-top: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      margin-top: 20px;
       font-size: 16px;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2563eb;
     }
   </style>
 </head>
@@ -50,9 +59,10 @@
 <div id="chat-container">
   <div id="chat">
     <div class="message bot">Bonjour Fabrice ! Je suis ton assistant pour apprendre l'anglais. Que veux-tu faire ?<br>
-    (Tu peux écrire : "Vocabulaire", "Dialogue", "Grammaire" ou "Surprends-moi")</div>
+    (Tu peux dire ou écrire : "Vocabulaire", "Dialogue", "Grammaire" ou "Surprends-moi")</div>
   </div>
-  <input id="userInput" placeholder="Écris ta réponse ici..." />
+  <input id="userInput" placeholder="Écris ta réponse ici ou utilise le micro..." />
+  <button onclick="startListening()">Parler avec le micro</button>
 </div>
 <script src="chatbot.js"></script>
 </body>
