@@ -36,7 +36,7 @@
       color: #166534;
       text-align: right;
     }
-    input, button {
+    input, button, select {
       width: 100%;
       padding: 12px;
       margin-top: 10px;
@@ -63,6 +63,8 @@
   </div>
   <input id="userInput" placeholder="Écris ta réponse ici ou utilise le micro..." />
   <button onclick="startListening()">Parler avec le micro</button>
+  <button onclick="repeatLast()">Répéter la phrase</button>
+  <select id="voiceSelect"></select>
 </div>
 <script src="chatbot.js"></script>
 </body>

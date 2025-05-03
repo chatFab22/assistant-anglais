@@ -1,5 +1,8 @@
 const input = document.getElementById('userInput');
 const chat = document.getElementById('chat');
+const voiceSelect = document.getElementById('voiceSelect');
+let lastSpoken = "";
+let selectedVoice = null;
 
 input.addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
@@ -23,7 +26,17 @@ function addMessage(text, sender) {
 function speak(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'en-US';
+  if (selectedVoice) {
+    utterance.voice = selectedVoice;
+  }
   speechSynthesis.speak(utterance);
+  lastSpoken = text;
+}
+
+function repeatLast() {
+  if (lastSpoken) {
+    speak(lastSpoken);
+  }
 }
 
 function respond(input) {
@@ -68,3 +81,21 @@ function startListening() {
   };
   recognition.start();
 }
+
+// Chargement des voix disponibles
+function loadVoices() {
+  const voices = speechSynthesis.getVoices();
+  voiceSelect.innerHTML = '';
+  voices.forEach(voice => {
+    const option = document.createElement('option');
+    option.value = voice.name;
+    option.textContent = `${voice.name} (${voice.lang})`;
+    voiceSelect.appendChild(option);
+  });
+  voiceSelect.onchange = () => {
+    selectedVoice = voices.find(voice => voice.name === voiceSelect.value);
+  };
+  // Sélection d'une voix par défaut
+  selectedVoice = voices.find(voice => voice.lang === 'en-US') || voices[0];
+}
+speechSynthesis.onvoiceschanged = loadVoices;
