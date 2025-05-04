@@ -45,27 +45,46 @@
       border: 1px solid #ccc;
       font-size: 16px;
     }
-    button {
-      background-color: #3b82f6;
+    .theme-button {
+      width: 48%;
+      margin: 1%;
+      display: inline-block;
+      background-color: #10b981;
       color: white;
-      border: none;
+      font-weight: bold;
       cursor: pointer;
+      text-align: center;
     }
-    button:hover {
-      background-color: #2563eb;
+    .theme-button:hover {
+      background-color: #059669;
+    }
+    #theme-buttons {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 <div id="chat-container">
   <div id="chat">
-    <div class="message bot">Bonjour Fabrice ! Je suis ton assistant pour apprendre l'anglais. Que veux-tu faire ?<br>
-    (Tu peux dire ou écrire : "Vocabulaire", "Dialogue", "Grammaire" ou "Quiz")</div>
+    <div class="message bot">Bonjour Fabrice ! Choisis un thème pour commencer :</div>
+  </div>
+  <div id="theme-buttons">
+    <button class="theme-button" onclick="sendTheme('vocabulaire')">Vocabulaire</button>
+    <button class="theme-button" onclick="sendTheme('dialogue')">Dialogue</button>
+    <button class="theme-button" onclick="sendTheme('grammaire')">Grammaire</button>
+    <button class="theme-button" onclick="sendTheme('quiz')">Quiz</button>
   </div>
   <input id="userInput" placeholder="Écris ta réponse ici ou utilise le micro..." />
   <button onclick="startListening()">Parler avec le micro</button>
   <button onclick="repeatLast()">Répéter la phrase</button>
 </div>
 <script src="chatbot.js"></script>
+<script>
+  function sendTheme(keyword) {
+    document.getElementById('userInput').value = keyword;
+    const event = new KeyboardEvent('keypress', { key: 'Enter' });
+    document.getElementById('userInput').dispatchEvent(event);
+  }
+</script>
 </body>
 </html>
