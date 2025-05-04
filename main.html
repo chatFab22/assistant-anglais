@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+  <title>Assistant anglais vocal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #1e3a8a;
+      color: white;
+    }
+    #splash {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      text-align: center;
+    }
+    #splash img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    #splash h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    #splash p {
+      font-size: 1.1em;
+      margin-top: 10px;
+    }
+    #chat-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="splash">
+  <img src="icon.png" alt="Icône" />
+  <h1>Bienvenue Fabrice !</h1>
+  <p>Démarrage de ton assistant d’anglais...</p>
+</div>
+
+<div id="chat-container"></div>
+
+<script>
+  setTimeout(() => {
+    document.getElementById('splash').style.display = 'none';
+    window.location.href = "main.html";
+  }, 2500);
+</script>
+
+</body>
+</html>
