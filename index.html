@@ -13,45 +13,16 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
       background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      margin: 0;
       color: white;
     }
-    #splash {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      z-index: 10;
-      animation: fadeOut 1s ease 2.5s forwards;
-    }
-    #splash img {
-      width: 120px;
-      margin-bottom: 20px;
-    }
-    #splash h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    #splash p {
-      font-size: 1.1em;
-      margin-top: 10px;
-    }
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
     #chat-container {
-      display: none;
       padding: 20px;
       background: #fff;
       color: #000;
       border-radius: 12px;
-      margin: 30px auto;
+      margin: 40px auto;
       max-width: 600px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
@@ -84,10 +55,6 @@
       background-color: #10b981;
       color: white;
       font-weight: bold;
-      cursor: pointer;
-    }
-    .theme-button:hover {
-      background-color: #059669;
     }
     #homeButton {
       display: none;
@@ -97,13 +64,6 @@
   </style>
 </head>
 <body>
-
-<div id="splash">
-  <img src="icon.png" alt="Icône" />
-  <h1>Bienvenue Fabrice !</h1>
-  <p>Démarrage de ton assistant d’anglais...</p>
-</div>
-
 <div id="chat-container">
   <div id="chat">
     <div class="message bot" id="intro">Bonjour Fabrice ! Choisis un thème pour commencer :</div>
@@ -119,29 +79,20 @@
   <button onclick="repeatLast()">Répéter la phrase</button>
   <button id="homeButton" onclick="goHome()">Accueil</button>
 </div>
-
 <script src="chatbot.js"></script>
 <script>
-  setTimeout(() => {
-    document.getElementById('splash').style.display = 'none';
-    document.getElementById('chat-container').style.display = 'block';
-  }, 2600);
-
-  function sendTheme(keyword) {
-    document.getElementById('userInput').value = keyword;
-    const event = new KeyboardEvent('keypress', { key: 'Enter' });
-    document.getElementById('userInput').dispatchEvent(event);
-    document.getElementById('theme-buttons').style.display = 'none';
-    document.getElementById('homeButton').style.display = 'block';
-    document.getElementById('intro').style.display = 'none';
-  }
-
-  function goHome() {
-    document.getElementById('theme-buttons').style.display = 'block';
-    document.getElementById('homeButton').style.display = 'none';
-    document.getElementById('intro').style.display = 'block';
-  }
+function sendTheme(k) {
+  document.getElementById('userInput').value = k;
+  document.getElementById('userInput').dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter' }));
+  document.getElementById('theme-buttons').style.display = 'none';
+  document.getElementById('homeButton').style.display = 'block';
+  document.getElementById('intro').style.display = 'none';
+}
+function goHome() {
+  document.getElementById('theme-buttons').style.display = 'block';
+  document.getElementById('homeButton').style.display = 'none';
+  document.getElementById('intro').style.display = 'block';
+}
 </script>
-
 </body>
 </html>
