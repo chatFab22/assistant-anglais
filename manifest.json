@@ -1,19 +1,19 @@
 {
-  "name": "Assistant Anglais",
+  "name": "Assistant anglais",
   "short_name": "Anglais",
-  "start_url": ".",
+  "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#3b82f6",
   "theme_color": "#3b82f6",
-  "description": "Ton assistant pour apprendre l'anglais",
+  "description": "Ton assistant vocal pour apprendre l'anglais",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+      "src": "icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
