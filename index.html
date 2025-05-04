@@ -16,7 +16,7 @@
     #chat-container {
       width: 90%;
       max-width: 600px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       padding: 20px;
@@ -61,12 +61,17 @@
     #theme-buttons {
       margin-top: 10px;
     }
+    #homeButton {
+      display: none;
+      background-color: #f97316;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 <div id="chat-container">
   <div id="chat">
-    <div class="message bot">Bonjour Fabrice ! Choisis un thème pour commencer :</div>
+    <div class="message bot" id="intro">Bonjour Fabrice ! Choisis un thème pour commencer :</div>
   </div>
   <div id="theme-buttons">
     <button class="theme-button" onclick="sendTheme('vocabulaire')">Vocabulaire</button>
@@ -77,6 +82,7 @@
   <input id="userInput" placeholder="Écris ta réponse ici ou utilise le micro..." />
   <button onclick="startListening()">Parler avec le micro</button>
   <button onclick="repeatLast()">Répéter la phrase</button>
+  <button id="homeButton" onclick="goHome()">Accueil</button>
 </div>
 <script src="chatbot.js"></script>
 <script>
@@ -84,6 +90,15 @@
     document.getElementById('userInput').value = keyword;
     const event = new KeyboardEvent('keypress', { key: 'Enter' });
     document.getElementById('userInput').dispatchEvent(event);
+    document.getElementById('theme-buttons').style.display = 'none';
+    document.getElementById('homeButton').style.display = 'block';
+    document.getElementById('intro').style.display = 'none';
+  }
+
+  function goHome() {
+    document.getElementById('theme-buttons').style.display = 'block';
+    document.getElementById('homeButton').style.display = 'none';
+    document.getElementById('intro').style.display = 'block';
   }
 </script>
 </body>
