@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Vocabulaire Anglais</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+    .bot, .user {
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .bot {
+      background-color: #d0e3ff;
+    }
+    .user {
+      background-color: #d4f8d4;
+      text-align: right;
+    }
+    #reponse {
+      width: 70%;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="dialogue">
+    <div class="bot" id="question">Bienvenue au quiz ! Devine : "Dog" signifie… ?</div>
+  </div>
+
+  <input type="text" id="reponse" placeholder="Ta réponse ici…">
+  <button onclick="envoyerReponse()">Envoyer</button>
+
+  <script>
+    const quiz = [
+      {
+        question: 'Devine : "Dog" signifie… ?',
+        reponses: ['chien', '"chien"', 'un chien', 'le chien', 'dog = chien']
+      },
+      {
+        question: 'Et "Cat" signifie… ?',
+        reponses: ['chat', '"chat"', 'un chat', 'le chat', 'cat = chat']
+      },
+      {
+        question: '"House" signifie… ?',
+        reponses: ['maison', '"maison"', 'une maison', 'la maison', 'house = maison']
+      }
+    ];
+
+    let index = 0;
+
+    function envoyerReponse() {
+      const input = document.getElementById("reponse");
+      const userInput = input.value.trim();
+      if (!userInput) return;
+
+      afficherUtilisateur(userInput);
+      verifierReponse(userInput);
+      input.value = "";
+    }
+
+    function afficherUtilisateur(texte) {
+      const div = document.createElement("div");
+      div.className = "user";
+      div.textContent = texte;
+      document.getElementById("dialogue").appendChild(div);
+    }
+
+    function afficherBot(texte) {
+      const div = document.createElement("div");
+      div.className = "bot";
+      div.textContent = texte;
+      document.getElementById("dialogue").appendChild(div);
+    }
+
+    function verifierReponse(userInput) {
+      const reponse = userInput.trim().toLowerCase();
+      const bonnes = quiz[index].reponses;
+
+      if (bonnes.includes(reponse)) {
+        afficherBot("Bravo !");
+      } else {
+        afficherBot("Presque ! La bonne réponse était : " + bonnes[0]);
+      }
+
+      index++;
+      if (index < quiz.length) {
+        setTimeout(() => {
+          afficherBot(quiz[index].question);
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          afficherBot("Fin du quiz ! Bien joué !");
+        }, 1000);
+      }
+    }
+  </script>
+
+</body>
+</html>
